@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natispieler Classifier</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./dropzone.min.css">
+    <link rel="stylesheet" href="./app.css">
+</head>
+
+<body>
+    <div class="container col-xxl-8 px-4 py-5 text-center">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">          
+          <div class="col-lg-4">
+            <h1 class="display-6 fw-bold text-body-emphasis lh-1 mb-3">Image Classifier</h1>
+            <p class="lead">A simple ML Classification Project</p>
+            <p class="lead"><strong>Who's that footballer?</strong> Identify 6 Swiss football stars with this fun image classifier! Upload a face and see the results.</p>
+            <div class="d-flex gap-2 d-md-flex justify-content-md-center" style="flex-wrap: wrap; flex-direction: column;">
+                
+                    <div class="row">
+                        <div class="col-12 mx-auto">
+                            <form action="/file-upload" class="dropzone" id="dropzone">
+                                <div class="dz-message needsclick">
+                                    <img src="./images/upload.png" width="50vw" height="50vw"><br>
+                                    <span class="note needsclick">Drop files here or click to upload</span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3 mx-auto">
+                            <button id="submitBtn" type="button" class="btn btn-success">Classify</button>
+                        </div>
+                    </div>
+                </div>
+            
+          </div>
+          <div class="col-12 col-sm-10 col-lg-8 justify-content-center">
+            <!-- <img src="bootstrap-themes.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy"> -->
+            
+            <div class="image-wrapper">
+                <!-- <div class="container">
+                    <img data-player="breel_embolo" src="./images/BE.jpg" alt="Image 1">
+                    <img data-player="granit_xhaka" src="./images/GX.jpg" alt="Image 2">
+                    <img data-player="ricardo_rodriguez" src="./images/RR.jpg" alt="Image 2">
+                    <img data-player="xherdan_shaqiri" src="./images/XS.jpg" alt="Image 2">
+                    <img data-player="yann_sommer" src="./images/YS.jpg" alt="Image 2">
+                </div> -->
+                <div class="avatars lg">
+                    <div class="avatar position-relative" data-player="breel_embolo">                      
+                      <img src="./images/BE.jpg" alt="Avatar of Breel Embolo" />
+                    </div>
+                    <div class="avatar position-relative" data-player="granit_xhaka">                      
+                      <img src="./images/GX.jpg" alt="Avatar of Granit Xhaka" />
+                    </div>
+                    <div class="avatar" data-player="ricardo_rodriguez">                      
+                      <img src="./images/RR.jpg" alt="Avatar of Ricardo Rodriguez" />
+                    </div>
+                    <div class="avatar" data-player="xherdan_shaqiri">                      
+                      <img src="./images/XS.jpg" alt="Avatar of Xherdan Shaqiri" />
+                    </div>
+                    <div class="avatar" data-player="yann_sommer">                      
+                      <img src="./images/YS.jpg" alt="Avatar of Yann Sommer" />
+                    </div>
+                  </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    <div class="container mb-5">
+        <div class="row  text-center">
+        <!-- <div class="col card-wrapper" data-player="breel_embolo">
+                <div class="card border-0">
+                    <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                        <img class="w-100 h-100" src="./images/BE.jpg" alt="Card image cap">
+                    </div>
+                    <div class="card-body text-center mt-4">
+                        <h4 class="text-uppercase card-title">Breel Embolo</h4>
+                        </p>
+                    </div>
+                </div>
+            </div>            
+            <div class="col card-wrapper" data-player="granit_xhaka">
+                    <div class="card border-0">
+                        <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                            <img class="w-100 h-100" src="./images/GX.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center mt-4">
+                            <h4 class="text-uppercase card-title">Granit Xhaka</h4>
+                            </p>
+                        </div>
+                    </div>
+            </div>            
+            <div class="col card-wrapper" data-player="ricardo_rodriguez">
+                    <div class="card border-0">
+                        <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                            <img class="w-100 h-100" src="./images/RR.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center mt-4">
+                            <h4 class="text-uppercase card-title">Ricardo Rodriguez</h4>
+                            </p>
+                        </div>
+                    </div>
+            </div>          
+
+            <div class="col card-wrapper" data-player="xherdan_shaqiri">
+                <div class="card border-0">
+                    <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                        <img class="w-100 h-100" src="./images/XS.jpg" alt="Card image cap">
+                    </div>
+                    <div class="card-body text-center mt-4">
+                        <h4 class="text-uppercase card-title">Xherdan Shaqiri</h4>
+                        </p>
+                    </div>
+                </div>
+            </div>      
+
+            <div class="col card-wrapper" data-player="yann_sommer">
+                <div class="card border-0">
+                    <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                        <img class="w-100 h-100" src="./images/YS.jpg" alt="Card image cap">
+                    </div>
+                    <div class="card-body text-center mt-4">
+                        <h4 class="text-uppercase fs-sm-6 card-title">Yann Sommer</h4>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div> -->
+        <div class="col-12">
+            <p class="fs-2 lead">Result:</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-8 error" id="error" >
+                <p>Classifier was not able to detect face and two eyes properly. Check if both eyes are clearly visible or upload an image with higher resolution.</p>    
+            </div>
+
+            <div class="col-sm-4 avatar" id="resultHolder">
+            </div>
+            <div class="col-sm-4" id="divClassTable">
+                <table id="classTable">
+                        <tr>
+                            <th>Player</th>
+                            <th>Probability Score</th>
+                        </tr>
+                        <tr>
+                            <td>Breel Embolo</td>
+                            <td id="score_breel_embolo"></td>
+                        </tr>
+                        <tr>
+                            <td>Granit Xhaka</td>
+                            <td id="score_granit_xhaka"></td>
+                        </tr>
+                        <tr>
+                            <td>Ricardo Rodriguez</td>
+                            <td id="score_ricardo_rodriguez"></td>
+                        </tr>
+                        <tr>
+                            <td>Xherdan Shaqiri</td>
+                            <td id="score_xherdan_shaqiri"></td>
+                        </tr>
+                        <tr>
+                            <td>Yann Sommer</td>
+                            <td id="score_yann_sommer"></td>
+                        </tr>
+                </table>
+            </div>            
+        </div>
+
+    </div>
+
+</body>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script src="./dropzone.min.js"></script>
+<script src="./app.js"></script>
+</html>

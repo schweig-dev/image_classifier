@@ -1,0 +1,118 @@
+/* .card-wrapper {
+    margin: 5% 0;
+}
+  
+.custom-circle-image {
+  width: 15vw;
+  height: 15vw;
+}
+
+.custom-circle-image img {
+  object-fit: cover;
+}
+
+.card-title {
+  letter-spacing: 1.1px;
+  font-size: large;
+}
+
+.card-text {
+  font-family: MerriweatherRegular;
+  font-size: 1rem;
+  line-height: initial;
+} */
+* {
+  box-sizing: border-box;
+}
+
+.image-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem;
+  font-size: 16px;
+}
+
+div.avatars {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  
+  & > div.avatar {
+    margin-right: -1rem;
+  }
+  
+  &.sm > div.avatar {
+    width: 2rem;
+    height: 2rem;
+    margin-right: -0.75rem;
+  }
+  
+  &.lg > div.avatar {
+    width: 7rem;
+    height: 7rem;
+    margin-right: -1.25rem;
+  }
+}
+
+div.avatar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #F3F4F6;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 
+              0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+div.avatar > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dropzone {
+  border-style: dashed;
+}
+
+#resultHolder {
+  width: 10rem;
+  height: 10rem;
+  overflow: visible;
+}
+
+.error {
+  font-family: MerriweatherRegular;
+  font-size: 30px;
+  line-height: initial;
+  color: #a2a2a2;
+  text-align: center;
+}
+
+
+#classTable {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#classTable td, #classTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#classTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
